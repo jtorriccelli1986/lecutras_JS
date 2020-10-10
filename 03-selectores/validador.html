@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<a href="www.styde.net">Styde.net</a>
+<a href="https://www.styde.net">Styde.net</a>
+
+</body>
+</html>
+
+<script type="text/javascript">
+	
+const debugRules = [
+        {
+            selector: 'a[href*="styde.net"]:not([href^="https"])',
+            message: 'Local non-https links'
+        },
+        {
+            selector: 'a:not([href*="styde.net"]):not([target="_blank"])',
+            message: 'External links without target attribute found'
+        },
+        {
+            selector: 'a:not([href*="styde.net"]):not([rel])',
+            message: 'External links without rel attribute found'
+        },
+        {
+            selector: 'img:not([alt])',
+            message: 'Images without alt attribute found'
+        },
+        {
+            selector: 'img:not([title])',
+            message: 'Images without title attribute found'
+        }
+        // ... ya tienes una idea.
+    ];
+
+
+function debugHtml(selector, message) {
+
+    let nodes = document.querySelectorAll(selector);
+    if (nodes !== null) {
+        console.log(message);
+        console.log(nodes);
+    }
+}
+
+debugRules.forEach((rule) => debugHtml(rule.selector, rule.message));
+
+</script>
